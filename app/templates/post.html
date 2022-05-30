@@ -1,0 +1,55 @@
+{% extends 'baseindex.html' %}
+{% block content %}
+
+  <div class="row g-5">
+    <div class="col-md-8">
+      <article class="blog-post">
+        <h3 class="blog-post-title">Consulta el precio actual del cerdo por kilo </h3>
+        <p>Aqui podras obtener un precio aproximado para poder vender el cerdo en base a como se encuentra actualmente</p>
+        <hr>
+        <button type="submit" onclick='myfunction_clickevent()'>Actualizar precio</button>
+        <button type="submit" onclick='segundafuncion_clickevent()'>Mostrar modelo de regresion lineal</button>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <!-- This script runs the python script on the page load -->
+        
+        <!-- This script runs the python script when the button is clicked -->
+        <script>
+            function myfunction_clickevent() {
+                $.ajax({
+                    url: "/envio",
+                    context: document.body
+                });
+            }
+        </script>
+        <script>
+            function segundafuncion_clickevent() {
+                $.ajax({
+                    url: "/modregresion",
+                    context: document.body
+                });
+            }
+        </script>
+        <blockquote class="blockquote">
+          <p>Aqui podras saber el precio por kilo en la ultima fecha leida</p>
+        </blockquote>
+        
+        <p> el precio actual es de : {{informacion.0}} en la fecha: {{informacion.1}} </p>
+
+        <p>Cuando note el cambio en la fecha del precio es un buen momento para actualizar el precio para el modelo de regresion lineal y 
+          asi obtener una mejor precision
+        </p>
+
+        <p>En la grafica que obtenemos del modelo de regresion lineal los puntos equivalen a un precio, con esto podemos ver como ha ido cambiando
+          a lo largo del tiempo
+        </p>
+    
+      </article>
+
+      
+      
+
+    </div>
+
+    
+  </div>
+{% endblock %}

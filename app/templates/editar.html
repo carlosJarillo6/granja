@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block body%}
+<h1>Edicion de informacion</h1>
+<form action="/actualizar/{{ informacion.0}}" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre" value="{{ informacion.1}}">
+    <input type="text" name="email" placeholder="Email" value="{{ informacion.2}}">
+    <input type="text" name="status" placeholder="Status" value="{{ informacion.3}}">
+    <button type="submit">Enviar datos</button>
+</form>
+
+{% endblock %}
